@@ -1,0 +1,61 @@
+<div class="card-panel teal lighten-2 col s12">Student</div>
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s10">
+                <input id="param_search" type="text" class="validate" [(ngModel)]="searchText" name="searchText">
+                <label for="param_search">Search</label>
+            </div>
+            <div class="col s2">
+                <a class="waves-effect waves-light btn" (click)="onSearch();">button</a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let s of studentData">
+                    <td> <i class="material-icons">edit</i></td>
+                    <td>{{s.studentName}}</td>
+                    <td>{{s.studentLastname}}</td>
+                    <td>{{s.studentMobile}}</td>
+                    <td> <i class="material-icons" (click)="onDelete(s.studentId);">delete</i></td>
+                </tr> -->
+                <tr *ngFor="let s of (students | async)?.items">
+                    <td> <i class="material-icons" (click)="onEdit(s.studentId);">edit</i></td>
+                    <td>{{s.studentName}}</td>
+                    <td>{{s.studentLastname}}</td>
+                    <td>{{s.studentMobile}}</td>
+                    <td> <i class="material-icons" (click)="onDelete(s.studentId);">delete</i></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <ul class="pagination">
+                <li class="disabled">
+                    <a href="#!">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                <li *ngFor="let p of (students | async)?.pages" [ngClass]="{'active': p.type == 'current'}">
+                    <a (click)="onPagination(p.url);">{{p.label}}</a>
+                </li>
+                <li class="waves-effect">
+                    <a href="#!">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <a class="btn-floating btn-large waves-effect waves-light red right" routerLink="/admin/student-form/0"><i class="material-icons">add</i></a>
+
+    </form>
+</div>

@@ -1,0 +1,50 @@
+{{student | json}}
+
+<div class="row">
+    <form class="col s12" #myForm="ngForm">
+        <div class="row">
+            <div class="input-field col s6">
+                <input pattern="^[a-zA-Z]*$" required placeholder="Placeholder" id="first_name" type="text" class="validate" [(ngModel)]="student.studentName" name="studentName">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate" [(ngModel)]="student.studentLastname" name="studentLastname">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input pattern="\b[a-z]+@\w+\.\w+\b" required id="email" type="email" class="validate" [(ngModel)]="student.studentEmail" name="studentEmail">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" [(ngModel)]="student.studentPassword" name="studentPassword">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <input id="mobile" type="text" class="validate" [(ngModel)]="student.studentMobile" name="studentMobile">
+            <label for="mobile">Mobile</label>
+        </div>
+        <div class="row">
+            <p>
+                <input class="with-gap" type="radio" id="test3" [(ngModel)]="student.studentActive" name="studentActive" value="Y" required/>
+                <label for="test3">Active</label>
+            </p>
+            <p>
+                <input class="with-gap" name="group1" type="radio" id="test4" [(ngModel)]="student.studentActive" name="studentActive" value="N" required/>
+                <label for="test4">Inactive</label>
+            </p>
+        </div>
+
+        <div class="row">
+            <button *ngIf="mode=='ADD'" class="btn col s5" (click)="onSave();" [disabled]="myForm.invalid">save</button>
+            <button *ngIf="mode=='UPDATE'" class="btn col s5 offset-s2 yellow" (click)="onUpdate();" [disabled]="myForm.invalid">update</button>
+            <button class="waves-effect waves-light btn-large col s5 offset-s2" (click)="onBack();">back</button>
+        </div>
+    </form>
+</div>
+
+{{myForm.status}}

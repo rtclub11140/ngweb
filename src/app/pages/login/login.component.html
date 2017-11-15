@@ -1,0 +1,76 @@
+<div class="container padding-form">
+    <div class="row">
+        <form class="col s12 m6 offset-m3 padding-form z-depth-1">
+            <div class="row">
+                <div class="col s12 center">
+                    <img class="responsive-img circle" src="https://dummyimage.com/200x200/b5a1b5/5a64ed" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" [(ngModel)]="studentEmail" name="studentEmail">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" [(ngModel)]="studentPassword" name="studentPassword">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <a class="waves-effect waves-light btn col s12" (click)="onLoginClick();">LOGIN</a>
+            </div>
+            <div class="row">
+                <a class="waves-effect waves-light btn col s12">RESET</a>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <a class="btn" (click)="loginWithGoogle();">signin with google</a>
+    </div>
+
+    <div class="row" *ngIf="af.authState | async; let user;">
+        {{user|json}}
+        <img [src]="user.photoURL" alt="user avatar">
+    </div>
+
+    {{(af.authState | async) | json}}
+
+    <div class="row">
+        <a class="btn" (click)="loginWithFacebook();">signin with facebook</a>
+    </div>
+
+    <div class="row">
+        <a class="btn" (click)="loginWithTwitter();">signin with twitter</a>
+    </div>
+
+    <div class="row">
+        <a class="btn" (click)="loginWithGitHub();">signin with github</a>
+    </div>
+
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="phone" type="text" [(ngModel)]="phone" name="phone">
+            <label for="phone">phone</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <a class="btn" (click)="loginWithPhone();">signin with phone</a>
+    </div>
+    <div id="recapt-id"></div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="otp" type="text" [(ngModel)]="otpText" name="otpText">
+            <label for="otp">Otp</label>
+        </div>
+    </div>
+    <div class="row">
+        <a class="btn" (click)="confirmOtp();">confirm</a>
+    </div>
+
+</div>
