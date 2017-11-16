@@ -71,12 +71,16 @@ export class LoginComponent implements OnInit {
    .catch(error => {});
   }
 
-  confirmOtp(){
+  confirmOtp() {
     window['confirmamtionResult'].confirm(this.otpText).then((resp) => {
         console.log(resp);
     }).catch((e) => {
         console.log(e);
     });
+  }
+
+  testSharp(value) {
+    console.log(value);
   }
 
 }
